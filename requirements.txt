@@ -7,3 +7,5 @@ python-dotenv
 
 # Optional for JWT-protected API:
 PyJWT
+
+gunicorn
