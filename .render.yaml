@@ -2,6 +2,7 @@ services:
   - type: web
     name: tasknest
     runtime: python
+    pythonVersion: 3.10
     buildCommand: ""
     startCommand: gunicorn app:app
     envVars:
