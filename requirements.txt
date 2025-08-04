@@ -4,8 +4,6 @@ Flask-SQLAlchemy
 mysqlclient
 requests
 python-dotenv
-
-# Optional for JWT-protected API:
+gunicorn
 PyJWT
 
-gunicorn
