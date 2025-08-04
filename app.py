@@ -10,18 +10,6 @@ from models import db, User, Task
 
 app = Flask(__name__)
 app.config.from_object(Config)
-# Secret key (you should load from environment for production)
-app.config['SECRET_KEY'] = '2532'
-
-# ✅ Add these lines to configure SQLAlchemy + SSL connection to MySQL
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://avnadmin:AVNS_pNII6tPOJ22KLu4Y_05@todolist-db-mahmudislam2025-73a6.k.aivencloud.com:23069/defaultdb'
-app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-    "connect_args": {
-        "ssl": {
-            "fake_flag_to_enable_ssl": True  # Allows SSL for Aiven
-        }
-    }
-}
 db.init_app(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
@@ -201,6 +189,7 @@ def get_token():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
+
 
 
 
