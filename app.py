@@ -18,6 +18,11 @@ login_manager.login_view = 'login'
 API_QUOTE_URL = 'https://api.quotable.io/random'
 JWT_SECRET = app.config['SECRET_KEY']
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -189,3 +194,4 @@ def get_token():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
+
