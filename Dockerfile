@@ -15,9 +15,13 @@ WORKDIR /app
 # Copy code
 COPY . .
 
-# Install Python dependencies
+# Upgrade pip and install Python dependencies
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port and run
+# Expose port for Flask
 EXPOSE 5000
-CMD ["python", "app.py"]
+
+# Use gunicorn instead of flask's built-in server
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]
+
