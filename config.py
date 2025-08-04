@@ -1,7 +1,11 @@
 import os
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or '2532'
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://mim9:mahmud123@localhost/todolist_db'
+    SQLALCHEMY_DATABASE_URI = (
+        f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@"
+        f"{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}?ssl-mode=REQUIRED"
+    )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = os.getenv("SECRET_KEY", "default-secret")
+
 
