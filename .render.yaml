@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: tasknest
+    runtime: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    envVars:
+      - key: DB_USER
+        value: avnadmin
+      - key: DB_PASSWORD
+        value: AVNS_pNII6tPOJ22KLu4Y_05
+      - key: DB_HOST
+        value: todolist-db-mahmudislam2025-73a6.k.aivencloud.com
+      - key: DB_PORT
+        value: 23069
+      - key: DB_NAME
+        value: defaultdb
+      - key: SECRET_KEY
+        value: any-random-secret
